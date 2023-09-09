@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:practice_project_1/dietDetails_screen.dart';
 import 'package:practice_project_1/models/category_model.dart';
 import 'package:practice_project_1/models/diet_model.dart';
 
@@ -56,22 +57,27 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
                 color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
           ),
-          Container(
-            height: 200,
-            child: ListView.separated(
-              itemCount: 5,
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10,
+          GestureDetector(
+            onTap: () {
+              Fluttertoast.showToast(msg: "View All Clicked!");
+            },
+            child: Container(
+              height: 200,
+              child: ListView.separated(
+                itemCount: 5,
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.purple.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: card_popular(),
+                  );
+                },
               ),
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                      color: Colors.purple.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: card_popular(),
-                );
-              },
             ),
           )
           // card_popular()
@@ -190,28 +196,41 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
 
-                        Container(
-                          height: 45,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                diets[index].viewIsSelected
-                                    ? Colors.blue.shade300
-                                    : Colors.transparent,
-                                diets[index].viewIsSelected
-                                    ? Colors.purple.shade300
-                                    : Colors.transparent
-                              ]),
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child: Text(
-                              'View',
-                              style: TextStyle(
-                                  color: diets[index].viewIsSelected
-                                      ? Colors.white
-                                      : Colors.purpleAccent,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500),
+                        GestureDetector(
+                          onTap: () {
+                            // Fluttertoast.showToast(msg: "View Clicked!");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DietDetails(),
+                                ));
+
+                            Navigator.pushNamed(
+                                context, '/dietDetails_screen.dart');
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  diets[index].viewIsSelected
+                                      ? Colors.blue.shade300
+                                      : Colors.transparent,
+                                  diets[index].viewIsSelected
+                                      ? Colors.purple.shade300
+                                      : Colors.transparent
+                                ]),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text(
+                                'View',
+                                style: TextStyle(
+                                    color: diets[index].viewIsSelected
+                                        ? Colors.white
+                                        : Colors.purpleAccent,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ),
                         )
