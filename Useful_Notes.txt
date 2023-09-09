@@ -1,0 +1,14 @@
+GestureDetector Widget: to make any container/thing clickable
+
+Opacity?
+
+Margin vs Padding?
+
+Expended Widget
+    Expanded(
+          child: Container(
+            decoration: BoxDecoration(color: Colors.amberAccent),
+          ),
+        )
+
+Whenever we are using divider in a Row, we must wrap the Row Widget in IntrisicHeight
