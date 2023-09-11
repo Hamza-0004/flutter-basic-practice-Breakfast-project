@@ -12,3 +12,14 @@ Expended Widget
         )
 
 Whenever we are using divider in a Row, we must wrap the Row Widget in IntrisicHeight
+
+
+// New things explored on 11 separated
+
+Expanded with singlechildScrollView Widget
+MediaQuery
+
+FractionallySizedBox with Columns and MediaQuery?
+
+
+
