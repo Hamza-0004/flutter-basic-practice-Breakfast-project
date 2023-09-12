@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:practice_project_1/models/diet_model.dart';
 
 class DietDetails extends StatefulWidget {
-  DietDetails({Key? key}) : super(key: key);
+  final DietModel dietModel;
+  DietDetails({Key? key, required this.dietModel}) : super(key: key);
   @override
   State<DietDetails> createState() => _DietDetailsState();
 }
@@ -10,6 +12,7 @@ class DietDetails extends StatefulWidget {
 class _DietDetailsState extends State<DietDetails> {
   @override
   Widget build(BuildContext context) {
+    DietModel dietModel = widget.dietModel;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -41,29 +44,21 @@ class _DietDetailsState extends State<DietDetails> {
                       color: Colors.white, shape: BoxShape.circle),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
-                    child: SvgPicture.asset('assets/icons/pancakes.svg'),
+                    child: SvgPicture.asset(dietModel.iconPath),
                   ),
                 ),
-                // Expanded(
-                //   flex: 8,
-                //   child: Container(
-                //     // height: 300,
-                //     width: double.infinity,
-                //     decoration: BoxDecoration(
-                //         color: Colors.white, shape: BoxShape.circle),
-                //     child: Padding(
-                //       padding: const EdgeInsets.all(20),
-                //       child: SvgPicture.asset('assets/icons/pancakes.svg'),
-                //     ),
-                //   ),
-                // ),
                 Column(
                   children: [
-                    Text('Pancakes',
+                    Text(dietModel.name,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.w600)),
                     Text(
-                      'Easy' + ' | ' + '30min' + ' | ' + '190' + ' Calories',
+                      dietModel.level +
+                          ' | ' +
+                          dietModel.duration +
+                          ' | ' +
+                          dietModel.calorie +
+                          ' Calories',
                       style: TextStyle(
                           color: Colors.black.withOpacity(0.4), fontSize: 13),
                     ),
@@ -79,19 +74,7 @@ class _DietDetailsState extends State<DietDetails> {
                   margin: EdgeInsets.only(left: 10, right: 10),
                   decoration: BoxDecoration(color: Colors.amber.shade100),
                   child: Text(
-                    'Pancakes are a traditional breakfast treat that are easy to make. Once you get the basic recipe down, you can start experimenting and putting your own spin on these breakfast-time favorites.' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n' +
-                        'Pancakes are good for health\n',
+                    dietModel.description,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -100,20 +83,6 @@ class _DietDetailsState extends State<DietDetails> {
                   )),
             ),
           ),
-          // Expanded(
-          //   child: Container(
-          //       padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-          //       margin: EdgeInsets.only(left: 10, right: 10),
-          //       decoration: BoxDecoration(color: Colors.amber.shade100),
-          //       child: Text(
-          //         'Pancakes are a traditional breakfast treat that are easy to make. Once you get the basic recipe down, you can start experimenting and putting your own spin on these breakfast-time favorites.',
-          //         textAlign: TextAlign.center,
-          //         style: TextStyle(
-          //           fontSize: 15,
-          //           fontWeight: FontWeight.w400,
-          //         ),
-          //       )),
-          // )
         ],
       ),
     );

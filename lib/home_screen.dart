@@ -202,11 +202,13 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => DietDetails(),
+                                  builder: (context) => DietDetails(
+                                    dietModel: diets[index],
+                                  ),
                                 ));
 
-                            Navigator.pushNamed(
-                                context, '/dietDetails_screen.dart');
+                            // Navigator.pushNamed(
+                            //     context, '/dietDetails_screen.dart');
                           },
                           child: Container(
                             height: 45,
